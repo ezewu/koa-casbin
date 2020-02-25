@@ -1,0 +1,35 @@
+@port = 3000
+@contentType = application/json;charset=utf-8
+@token = alice
+
+# p, alice, /dataset1/*, GET
+# p, alice, /dataset1/resource1, POST
+# p, alice, /dataset1/resource2, PUT
+# p, alice, /dataset1/, DELETE
+# p, alice, /dataset1/:id, DELETE
+# p, bob, /dataset2/resource1, *
+# p, bob, /dataset2/resource2, GET
+# p, bob, /dataset2/folder1/*, POST
+# g, cathy, alice
+
+### 
+GET http://127.0.0.1:3000/dataset1/
+Authorization:{{token}}
+###
+GET http://127.0.0.1:3000/dataset1/resource1
+Authorization:{{token}}
+###
+PUT http://127.0.0.1:3000/dataset1/resource2
+Authorization:{{token}}
+###
+DELETE  http://127.0.0.1:3000/dataset1/
+Authorization:{{token}}
+###
+DELETE  http://127.0.0.1:3000/dataset1/445
+Authorization:{{token}}
+###
+GET  http://127.0.0.1:3000/dataset1/resource1/resource2
+Authorization:{{token}}
+###
+POST http://127.0.0.1:3000/dataset1/resource1
+Authorization:{{token}}

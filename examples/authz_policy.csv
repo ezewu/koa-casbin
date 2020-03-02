@@ -7,3 +7,5 @@ p, bob, /dataset2/resource1, *
 p, bob, /dataset2/resource2, GET
 p, bob, /dataset2/folder1/*, POST
 g, cathy, alice
+g, aaaaa, alice
+g, bbbbb, bob

@@ -1,6 +1,6 @@
 @port = 3000
 @contentType = application/json;charset=utf-8
-@token = bbbbb
+@token = bbbb
 
 # p, alice, /dataset1/*, GET
 # p, alice, /dataset1/resource1, POST

@@ -9,11 +9,7 @@ const router = new Router()
 app.use(koaBody())
 
 app.use(async (ctx, next) => {
-    const newEnforcer = async () => {
-        const enforcer = await casbin.newEnforcer('examples/authz_model.conf', 'examples/authz_policy.csv')
-        return enforcer
-    }
-    const enforcer = await newEnforcer()
+    const enforcer = await casbin.newEnforcer('examples/authz_model.conf', 'examples/authz_policy.csv')
     const { originalUrl: path, method } = ctx
     const username = ctx.get('Authorization')
 
@@ -26,8 +22,13 @@ app.use(async (ctx, next) => {
             time: Date.now()
         }
     }
+    console.log('获取用户具有的隐式角色 检索间接角色 ', await enforcer.getImplicitRolesForUser('bbbb'))
+    console.log('获取用户具有的角色 不检索间接角色 ', await enforcer.getRolesForUser('bbbb'))
+    console.log('获取所有用户 ', await enforcer.getAllSubjects())
+    console.log('获取所有角色 ', await enforcer.getAllRoles())
     await next()
 })
+
 
 app.use(router.routes()).use(router.allowedMethods())
 

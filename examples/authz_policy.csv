@@ -7,8 +7,9 @@ p, bob,   /dataset2/resource1, *
 p, bob,   /dataset2/resource2, GET
 p, bob,   /dataset2/folder1/*, POST
 
-g, cathy1, alice
-g, cathy2, bob
 
 g, aaaa, cathy1
 g, bbbb, cathy2
+
+g, cathy1, alice
+g, cathy2, bob
